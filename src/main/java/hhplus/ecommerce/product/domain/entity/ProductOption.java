@@ -23,7 +23,7 @@ public class ProductOption {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime createDate;
 
     @OneToOne(mappedBy = "productOption", cascade = CascadeType.ALL, orphanRemoval = true)

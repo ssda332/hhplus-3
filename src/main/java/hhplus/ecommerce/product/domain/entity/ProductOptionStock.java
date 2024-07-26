@@ -32,4 +32,8 @@ public class ProductOptionStock {
         if (this.stock < 1) throw new InsufficientStockException("재고 없음");
     }
 
+    public void changeStock(Long value) {
+        this.stock = value;
+    }
+
 }

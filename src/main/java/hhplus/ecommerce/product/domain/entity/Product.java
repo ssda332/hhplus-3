@@ -30,7 +30,7 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductOption> productOptions;
 
-    public void decreaseStock(OrderSheetItem item) {
+    /*public void decreaseStock(OrderSheetItem item) {
         for (ProductOption productOption : this.productOptions) {
             if (productOption.getId().equals(item.getProductOptionId())) {
                 productOption.decreaseStock(item);
@@ -38,5 +38,5 @@ public class Product {
             }
         }
         throw new ProductOptionNotFoundException("상품 옵션 없음");
-    }
+    }*/
 }

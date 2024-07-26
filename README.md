@@ -18,3 +18,8 @@ https://github.com/ssda332/hhplus-3/pull/19/commits/e73d7c487a2fb77a24c67fe512cd
 
 ### swagger
 https://raw.githubusercontent.com/ssda332/hhplus-ecommerce/ac73089715e457f33bd000682ff9a53a31120273/src/main/resources/doc/swaggerFull.png
+
+### 9주차 과제
+- CHAPTER 11 분석 자료 링크
+- https://boggy-frog-938.notion.site/3259ec2085e048c4bd4f78fbd6ee6c7e?pvs=4
+ 
