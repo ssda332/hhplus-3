@@ -1,7 +1,10 @@
 package hhplus.ecommerce.product.domain.entity;
 
-import hhplus.ecommerce.ordersheet.domain.entity.OrderSheetItem;
-import hhplus.ecommerce.product.exception.ProductOptionNotFoundException;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -24,10 +27,13 @@ public class Product {
     @Column(nullable = false)
     private Long price;
 
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Column(nullable = false)
     private LocalDateTime createDate;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ProductOption> productOptions;
 
     /*public void decreaseStock(OrderSheetItem item) {

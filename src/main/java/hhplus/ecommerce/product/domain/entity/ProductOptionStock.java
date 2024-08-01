@@ -1,5 +1,6 @@
 package hhplus.ecommerce.product.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import hhplus.ecommerce.ordersheet.domain.entity.OrderSheetItem;
 import hhplus.ecommerce.product.exception.InsufficientStockException;
 import jakarta.persistence.*;
@@ -20,6 +21,7 @@ public class ProductOptionStock {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_option_id", nullable = false)
+    @JsonBackReference
     private ProductOption productOption;
 
     public void decreaseStock(OrderSheetItem item) {

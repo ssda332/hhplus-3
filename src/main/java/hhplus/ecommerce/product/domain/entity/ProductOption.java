@@ -1,9 +1,11 @@
 package hhplus.ecommerce.product.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import hhplus.ecommerce.ordersheet.domain.entity.OrderSheetItem;
 import hhplus.ecommerce.product.exception.ProductOptionNotFoundException;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,12 +20,13 @@ public class ProductOption {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
+    @JsonBackReference
     private Product product;
 
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime createDate;
 
     @OneToOne(mappedBy = "productOption", cascade = CascadeType.ALL, orphanRemoval = true)

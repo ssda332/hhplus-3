@@ -1,4 +1,9 @@
 spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
   application:
     name: e-commerce
 
@@ -23,3 +28,4 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+

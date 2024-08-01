@@ -40,23 +40,17 @@ public class OrderIntegrationTest {
     @Autowired
     private ProductOptionStockRepository productOptionStockRepository;
 
-
-    private static final Long MEMBER_ID = 1L;
-    private static final Long ORDER_SHEET_ID = 1L;
-    private static final Long PRODUCT_OPTION_ID = 1L;
-    private static final int INITIAL_STOCK = 100;
-    private static final int ORDER_QUANTITY = 10;
-
     public ProductOptionStock stock1;
 
     @BeforeEach
     void setUp() {
         stock1 = productOptionStockRepository.findByProductOptionId(1L).orElseThrow(() -> new RuntimeException());
+
     }
 
     @Test
     @DisplayName("하나의 상품옵션에 대해 재고에 딱 맞춰서 여러 요청이 들어오고 요청들이 정상적으로 처리된다")
-    void testConcurrentOrders() throws InterruptedException {
+    void testConcurrentOrders_ideal() throws InterruptedException {
         // given
         int numberOfThreads = 10;
         stock1.changeStock(100L);
@@ -104,5 +98,19 @@ public class OrderIntegrationTest {
                 () -> assertThat(successCount.get()).isEqualTo(10),
                 () -> assertThat(failCount.get()).isEqualTo(0)
         );
+
+        // 재고 차감에 대한 11건 12건 해서 경계값
+
     }
+
+    @Test
+    @DisplayName("")
+    void testConcurrentOrders_fail() throws InterruptedException {
+        //given
+        int numberOfThreads = 10;
+        stock1.changeStock(100L);
+
+
+    }
+
 }

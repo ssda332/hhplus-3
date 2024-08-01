@@ -21,6 +21,8 @@ public class PaymentFacade {
     @Transactional
     public Payment savePayment(PaymentDto dto) {
         // 결제정보 저장
+        // 리앤트락 걸기 + 트랜잭션 안에다 걸고 테스트 진행해보기
+
         paymentService.checkPaymentInfo(dto.approvalNumber());
         Payment payment = paymentService.savePayment(dto);
 

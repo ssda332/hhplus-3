@@ -4,6 +4,7 @@ import hhplus.ecommerce.order.domain.entity.OrderItem;
 import hhplus.ecommerce.product.domain.entity.Product;
 import hhplus.ecommerce.product.domain.service.ProductService;
 import hhplus.ecommerce.product.dto.ProductDetailResponseDto;
+import hhplus.ecommerce.product.dto.ProductPopularDto;
 import hhplus.ecommerce.product.dto.ProductResponseDto;
 import hhplus.ecommerce.product.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
@@ -28,15 +29,13 @@ public class ProductController {
     // 상위 상품 조회 API
     @GetMapping("/top")
     public List<ProductDetailResponseDto> getTopProducts() {
-        List<Product> topProducts = productService.getTopProducts();
-        return topProducts.stream()
-                .flatMap(product -> productMapper.mapProductOptions(product).stream())
-                .collect(Collectors.toList());
+        List<ProductPopularDto> topProducts = productService.getTopProducts();
+        return productMapper.toProductDetailResponseDtoList(topProducts);
     }
 
     // 상품 정보 조회 API
     @GetMapping("/{id}")
-    public ProductResponseDto getProductDetail(@PathVariable Long id) {
+    public ProductResponseDto getProductDetail(@PathVariable("id") Long id) {
         return productMapper.toProductResponseDto(productService.getProductById(id));
     }
 

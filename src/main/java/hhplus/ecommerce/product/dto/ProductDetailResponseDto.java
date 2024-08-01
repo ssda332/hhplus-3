@@ -8,7 +8,6 @@ public record ProductDetailResponseDto(
     Long optionId,
     String optionName,
     Long price,
-    LocalDateTime createDate,
     Long stock
 
 ) {

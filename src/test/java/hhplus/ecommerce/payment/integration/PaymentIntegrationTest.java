@@ -1,24 +1,18 @@
 package hhplus.ecommerce.payment.integration;
 
-import hhplus.ecommerce.balance.domain.entity.Balance;
 import hhplus.ecommerce.balance.domain.repository.BalanceRepository;
 import hhplus.ecommerce.payment.application.PaymentFacade;
 import hhplus.ecommerce.payment.domain.dto.PaymentDto;
-import hhplus.ecommerce.payment.domain.entity.Payment;
 import hhplus.ecommerce.payment.domain.repository.PaymentRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
